@@ -1,0 +1,21 @@
+body,html{ background:#f4f4f4; }
+.topBg { height:80px; width:100%; background:#2292b7 url("/system/images/topBg.png") no-repeat right 0;}
+.classBox { width:1100px; height:1000px; margin:30px 0 0 30px;}
+.classBox h2 { height:50px; background:#dddddd; line-height:50px; font-size:28px; font-weight:normal; padding-left:88px;}
+.classBox .addBtn { font-size:20px; background:#d16666; border-radius:4px; color:#fff; margin:15px 0 15px 30px; display:block; cursor:pointer; width:80px; height:40px; line-height:40px; text-align:center;}
+.classBox .addBtn.active { color:#2292b7;}
+table { background:#fff; border-collapse: collapse; width:1100px; font-size:36px;}
+table td { height:90px; border-bottom:solid 1px #dddddd; border-top:solid 1px #dddddd; margin-top:-1px; text-align: center;}
+table td a { font-size:36px; text-decoration:underline; color:#333;}
+table td a:hover { color:#0d6b8a;}
+
+.winBox { width:768px; height:578px; position:fixed; top:50%; left:50%; margin-top:-200px; margin-left:-384px; border:solid 1px #dddddd; background:#fff;display: none}
+
+.winBox h2 { height:58px; background:#dddddd; font-size:30px; color:#333; font-weight:normal; text-align:center; line-height:58px; position:relative;}
+.winBox h2 i { position:absolute; background:url("/huotui/images/close.png") no-repeat center; width:36px; height:36px; top:50%; right:14px; margin-top:-18px;}
+.name { border-bottom:solid 1px #ddd; padding:36px 0 ; margin-left:122px; height:50px;}
+.name label,.href label { font-size:30px; line-height:50px; color:#666; float:left; margin-right:6px;}
+.name input,.href input { width:354px; outline: none; border:solid 1px #666; font-size:24px; padding:10px 0 10px 6px; float:left;}
+.href {padding:36px 0 ; margin-left:122px; height:50px;}
+.save { margin-top:167px; text-align:center;}
+.save span { background:#dddddd; padding:10px 121px; color:#fff; font-size:30px; cursor:pointer; border-radius:5px;}

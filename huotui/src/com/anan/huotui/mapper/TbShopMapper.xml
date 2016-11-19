@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anan.huotui.mapper.TbShopMapper" >
+  <resultMap id="BaseResultMap" type="com.anan.huotui.po.TbShop" >
+    <id column="sid" property="sid" jdbcType="BIGINT" />
+    <result column="sname" property="sname" jdbcType="CHAR" />
+    <result column="saccount" property="saccount" jdbcType="CHAR" />
+    <result column="saddress" property="saddress" jdbcType="CHAR" />
+    <result column="sprivince" property="sprivince" jdbcType="CHAR" />
+    <result column="scity" property="scity" jdbcType="CHAR" />
+    <result column="sarea" property="sarea" jdbcType="CHAR" />
+    <result column="linkname" property="linkname" jdbcType="CHAR" />
+    <result column="linktele" property="linktele" jdbcType="CHAR" />
+    <result column="token" property="token" jdbcType="CHAR" />
+    <result column="uuid" property="uuid" jdbcType="CHAR" />
+    <result column="logo" property="logo" jdbcType="CHAR" />
+    <result column="jingdu" property="jingdu" jdbcType="CHAR" />
+    <result column="weidu" property="weidu" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    sid, sname, saccount, saddress, sprivince, scity, sarea, linkname, linktele, token, 
+    uuid, logo, jingdu, weidu
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.anan.huotui.po.TbShopExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_shop
+    where sid = #{sid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_shop
+    where sid = #{sid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.anan.huotui.po.TbShopExample" >
+    delete from tb_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.anan.huotui.po.TbShop" >
+    insert into tb_shop (sid, sname, saccount, 
+      saddress, sprivince, scity, 
+      sarea, linkname, linktele, token, 
+      uuid, logo, jingdu, weidu
+      )
+    values (#{sid,jdbcType=BIGINT}, #{sname,jdbcType=CHAR}, #{saccount,jdbcType=CHAR}, 
+      #{saddress,jdbcType=CHAR}, #{sprivince,jdbcType=CHAR}, #{scity,jdbcType=CHAR}, 
+      #{sarea,jdbcType=CHAR}, #{linkname,jdbcType=CHAR}, #{linktele,jdbcType=CHAR}, #{token,jdbcType=CHAR}, 
+      #{uuid,jdbcType=CHAR}, #{logo,jdbcType=CHAR}, #{jingdu,jdbcType=CHAR}, #{weidu,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.anan.huotui.po.TbShop" >
+    insert into tb_shop
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        sid,
+      </if>
+      <if test="sname != null" >
+        sname,
+      </if>
+      <if test="saccount != null" >
+        saccount,
+      </if>
+      <if test="saddress != null" >
+        saddress,
+      </if>
+      <if test="sprivince != null" >
+        sprivince,
+      </if>
+      <if test="scity != null" >
+        scity,
+      </if>
+      <if test="sarea != null" >
+        sarea,
+      </if>
+      <if test="linkname != null" >
+        linkname,
+      </if>
+      <if test="linktele != null" >
+        linktele,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="uuid != null" >
+        uuid,
+      </if>
+      <if test="logo != null" >
+        logo,
+      </if>
+      <if test="jingdu != null" >
+        jingdu,
+      </if>
+      <if test="weidu != null" >
+        weidu,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sid != null" >
+        #{sid,jdbcType=BIGINT},
+      </if>
+      <if test="sname != null" >
+        #{sname,jdbcType=CHAR},
+      </if>
+      <if test="saccount != null" >
+        #{saccount,jdbcType=CHAR},
+      </if>
+      <if test="saddress != null" >
+        #{saddress,jdbcType=CHAR},
+      </if>
+      <if test="sprivince != null" >
+        #{sprivince,jdbcType=CHAR},
+      </if>
+      <if test="scity != null" >
+        #{scity,jdbcType=CHAR},
+      </if>
+      <if test="sarea != null" >
+        #{sarea,jdbcType=CHAR},
+      </if>
+      <if test="linkname != null" >
+        #{linkname,jdbcType=CHAR},
+      </if>
+      <if test="linktele != null" >
+        #{linktele,jdbcType=CHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=CHAR},
+      </if>
+      <if test="uuid != null" >
+        #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="logo != null" >
+        #{logo,jdbcType=CHAR},
+      </if>
+      <if test="jingdu != null" >
+        #{jingdu,jdbcType=CHAR},
+      </if>
+      <if test="weidu != null" >
+        #{weidu,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.anan.huotui.po.TbShopExample" resultType="java.lang.Integer" >
+    select count(*) from tb_shop
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_shop
+    <set >
+      <if test="record.sid != null" >
+        sid = #{record.sid,jdbcType=BIGINT},
+      </if>
+      <if test="record.sname != null" >
+        sname = #{record.sname,jdbcType=CHAR},
+      </if>
+      <if test="record.saccount != null" >
+        saccount = #{record.saccount,jdbcType=CHAR},
+      </if>
+      <if test="record.saddress != null" >
+        saddress = #{record.saddress,jdbcType=CHAR},
+      </if>
+      <if test="record.sprivince != null" >
+        sprivince = #{record.sprivince,jdbcType=CHAR},
+      </if>
+      <if test="record.scity != null" >
+        scity = #{record.scity,jdbcType=CHAR},
+      </if>
+      <if test="record.sarea != null" >
+        sarea = #{record.sarea,jdbcType=CHAR},
+      </if>
+      <if test="record.linkname != null" >
+        linkname = #{record.linkname,jdbcType=CHAR},
+      </if>
+      <if test="record.linktele != null" >
+        linktele = #{record.linktele,jdbcType=CHAR},
+      </if>
+      <if test="record.token != null" >
+        token = #{record.token,jdbcType=CHAR},
+      </if>
+      <if test="record.uuid != null" >
+        uuid = #{record.uuid,jdbcType=CHAR},
+      </if>
+      <if test="record.logo != null" >
+        logo = #{record.logo,jdbcType=CHAR},
+      </if>
+      <if test="record.jingdu != null" >
+        jingdu = #{record.jingdu,jdbcType=CHAR},
+      </if>
+      <if test="record.weidu != null" >
+        weidu = #{record.weidu,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_shop
+    set sid = #{record.sid,jdbcType=BIGINT},
+      sname = #{record.sname,jdbcType=CHAR},
+      saccount = #{record.saccount,jdbcType=CHAR},
+      saddress = #{record.saddress,jdbcType=CHAR},
+      sprivince = #{record.sprivince,jdbcType=CHAR},
+      scity = #{record.scity,jdbcType=CHAR},
+      sarea = #{record.sarea,jdbcType=CHAR},
+      linkname = #{record.linkname,jdbcType=CHAR},
+      linktele = #{record.linktele,jdbcType=CHAR},
+      token = #{record.token,jdbcType=CHAR},
+      uuid = #{record.uuid,jdbcType=CHAR},
+      logo = #{record.logo,jdbcType=CHAR},
+      jingdu = #{record.jingdu,jdbcType=CHAR},
+      weidu = #{record.weidu,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anan.huotui.po.TbShop" >
+    update tb_shop
+    <set >
+      <if test="sname != null" >
+        sname = #{sname,jdbcType=CHAR},
+      </if>
+      <if test="saccount != null" >
+        saccount = #{saccount,jdbcType=CHAR},
+      </if>
+      <if test="saddress != null" >
+        saddress = #{saddress,jdbcType=CHAR},
+      </if>
+      <if test="sprivince != null" >
+        sprivince = #{sprivince,jdbcType=CHAR},
+      </if>
+      <if test="scity != null" >
+        scity = #{scity,jdbcType=CHAR},
+      </if>
+      <if test="sarea != null" >
+        sarea = #{sarea,jdbcType=CHAR},
+      </if>
+      <if test="linkname != null" >
+        linkname = #{linkname,jdbcType=CHAR},
+      </if>
+      <if test="linktele != null" >
+        linktele = #{linktele,jdbcType=CHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=CHAR},
+      </if>
+      <if test="uuid != null" >
+        uuid = #{uuid,jdbcType=CHAR},
+      </if>
+      <if test="logo != null" >
+        logo = #{logo,jdbcType=CHAR},
+      </if>
+      <if test="jingdu != null" >
+        jingdu = #{jingdu,jdbcType=CHAR},
+      </if>
+      <if test="weidu != null" >
+        weidu = #{weidu,jdbcType=CHAR},
+      </if>
+    </set>
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anan.huotui.po.TbShop" >
+    update tb_shop
+    set sname = #{sname,jdbcType=CHAR},
+      saccount = #{saccount,jdbcType=CHAR},
+      saddress = #{saddress,jdbcType=CHAR},
+      sprivince = #{sprivince,jdbcType=CHAR},
+      scity = #{scity,jdbcType=CHAR},
+      sarea = #{sarea,jdbcType=CHAR},
+      linkname = #{linkname,jdbcType=CHAR},
+      linktele = #{linktele,jdbcType=CHAR},
+      token = #{token,jdbcType=CHAR},
+      uuid = #{uuid,jdbcType=CHAR},
+      logo = #{logo,jdbcType=CHAR},
+      jingdu = #{jingdu,jdbcType=CHAR},
+      weidu = #{weidu,jdbcType=CHAR}
+    where sid = #{sid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anan.huotui.mapper.TbAddressMapper" >
+  <resultMap id="BaseResultMap" type="com.anan.huotui.po.TbAddress" >
+    <id column="aid" property="aid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="deflaut" property="deflaut" jdbcType="SMALLINT" />
+    <result column="linkman" property="linkman" jdbcType="VARCHAR" />
+    <result column="tel" property="tel" jdbcType="VARCHAR" />
+    <result column="privince" property="privince" jdbcType="CHAR" />
+    <result column="city" property="city" jdbcType="CHAR" />
+    <result column="area" property="area" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    aid, uid, deflaut, linkman, tel, privince, city, area, address
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.anan.huotui.po.TbAddressExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_address
+    where aid = #{aid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_address
+    where aid = #{aid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.anan.huotui.po.TbAddressExample" >
+    delete from tb_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.anan.huotui.po.TbAddress" >
+    insert into tb_address (aid, uid, deflaut, 
+      linkman, tel, privince, 
+      city, area, address)
+    values (#{aid,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{deflaut,jdbcType=SMALLINT}, 
+      #{linkman,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{privince,jdbcType=CHAR}, 
+      #{city,jdbcType=CHAR}, #{area,jdbcType=CHAR}, #{address,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.anan.huotui.po.TbAddress" >
+    insert into tb_address
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        aid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="deflaut != null" >
+        deflaut,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="privince != null" >
+        privince,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="aid != null" >
+        #{aid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="deflaut != null" >
+        #{deflaut,jdbcType=SMALLINT},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="privince != null" >
+        #{privince,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.anan.huotui.po.TbAddressExample" resultType="java.lang.Integer" >
+    select count(*) from tb_address
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_address
+    <set >
+      <if test="record.aid != null" >
+        aid = #{record.aid,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.deflaut != null" >
+        deflaut = #{record.deflaut,jdbcType=SMALLINT},
+      </if>
+      <if test="record.linkman != null" >
+        linkman = #{record.linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.privince != null" >
+        privince = #{record.privince,jdbcType=CHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=CHAR},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=CHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_address
+    set aid = #{record.aid,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      deflaut = #{record.deflaut,jdbcType=SMALLINT},
+      linkman = #{record.linkman,jdbcType=VARCHAR},
+      tel = #{record.tel,jdbcType=VARCHAR},
+      privince = #{record.privince,jdbcType=CHAR},
+      city = #{record.city,jdbcType=CHAR},
+      area = #{record.area,jdbcType=CHAR},
+      address = #{record.address,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anan.huotui.po.TbAddress" >
+    update tb_address
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="deflaut != null" >
+        deflaut = #{deflaut,jdbcType=SMALLINT},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="privince != null" >
+        privince = #{privince,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=CHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+    </set>
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anan.huotui.po.TbAddress" >
+    update tb_address
+    set uid = #{uid,jdbcType=BIGINT},
+      deflaut = #{deflaut,jdbcType=SMALLINT},
+      linkman = #{linkman,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      privince = #{privince,jdbcType=CHAR},
+      city = #{city,jdbcType=CHAR},
+      area = #{area,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR}
+    where aid = #{aid,jdbcType=BIGINT}
+  </update>
+</mapper>

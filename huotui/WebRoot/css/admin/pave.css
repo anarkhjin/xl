@@ -1,0 +1,9 @@
+body,html{ background:#f4f4f4; }
+.topBg { height:80px; width:100%; background:#2292b7 url("/system/images/topBg.png") no-repeat right 0;}
+.con { width:1100px; margin:30px 0 0 30px; background:#fff; padding-bottom:122px;}
+.con h2 { height:50px; background:#dddddd; line-height:50px; font-size:28px; font-weight:normal; padding-left:88px;}
+table { width:1100px; text-align:center; margin-bottom:36px;}
+thead th { height:90px; color:#666; font-size:24px; font-weight:normal; border-bottom:solid 1px #ddd;}
+tbody td { height:90px; border-bottom:solid 1px #ddd; font-size:18px;}
+.addPave { width:122px; height:40px; background:#d16666; display:block; line-height:40px; text-align:center; color:#fff; font-size:20px; margin-left:86px; border-radius:4px; cursor:pointer;}
+tbody a { font-size:18px; color:#666; text-decoration:underline;}

@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anan.huotui.mapper.TbOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.anan.huotui.po.TbOrder" >
+    <id column="oid" property="oid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="state" property="state" jdbcType="INTEGER" />
+    <result column="yunfei" property="yunfei" jdbcType="INTEGER" />
+    <result column="priceindeed" property="priceindeed" jdbcType="INTEGER" />
+    <result column="priceall" property="priceall" jdbcType="INTEGER" />
+    <result column="privince" property="privince" jdbcType="CHAR" />
+    <result column="city" property="city" jdbcType="CHAR" />
+    <result column="area" property="area" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="linkman" property="linkman" jdbcType="CHAR" />
+    <result column="linktel" property="linktel" jdbcType="CHAR" />
+    <result column="youhui" property="youhui" jdbcType="INTEGER" />
+    <result column="huoyun" property="huoyun" jdbcType="BIT" />
+    <result column="qid" property="qid" jdbcType="BIGINT" />
+    <result column="goodslist" property="goodslist" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.anan.huotui.po.TbOrder" extends="BaseResultMap" >
+    <result column="tips" property="tips" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    oid, uid, state, yunfei, priceindeed, priceall, privince, city, area, address, linkman, 
+    linktel, youhui, huoyun, qid, goodslist
+  </sql>
+  <sql id="Blob_Column_List" >
+    tips
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.anan.huotui.po.TbOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.anan.huotui.po.TbOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from tb_order
+    where oid = #{oid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_order
+    where oid = #{oid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.anan.huotui.po.TbOrderExample" >
+    delete from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.anan.huotui.po.TbOrder" >
+    insert into tb_order (oid, uid, state, 
+      yunfei, priceindeed, priceall, 
+      privince, city, area, address, 
+      linkman, linktel, youhui, 
+      huoyun, qid, goodslist, 
+      tips)
+    values (#{oid,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{state,jdbcType=INTEGER}, 
+      #{yunfei,jdbcType=INTEGER}, #{priceindeed,jdbcType=INTEGER}, #{priceall,jdbcType=INTEGER}, 
+      #{privince,jdbcType=CHAR}, #{city,jdbcType=CHAR}, #{area,jdbcType=CHAR}, #{address,jdbcType=CHAR}, 
+      #{linkman,jdbcType=CHAR}, #{linktel,jdbcType=CHAR}, #{youhui,jdbcType=INTEGER}, 
+      #{huoyun,jdbcType=BIT}, #{qid,jdbcType=BIGINT}, #{goodslist,jdbcType=VARCHAR}, 
+      #{tips,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.anan.huotui.po.TbOrder" >
+    insert into tb_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        oid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="yunfei != null" >
+        yunfei,
+      </if>
+      <if test="priceindeed != null" >
+        priceindeed,
+      </if>
+      <if test="priceall != null" >
+        priceall,
+      </if>
+      <if test="privince != null" >
+        privince,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="area != null" >
+        area,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="linkman != null" >
+        linkman,
+      </if>
+      <if test="linktel != null" >
+        linktel,
+      </if>
+      <if test="youhui != null" >
+        youhui,
+      </if>
+      <if test="huoyun != null" >
+        huoyun,
+      </if>
+      <if test="qid != null" >
+        qid,
+      </if>
+      <if test="goodslist != null" >
+        goodslist,
+      </if>
+      <if test="tips != null" >
+        tips,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="oid != null" >
+        #{oid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="yunfei != null" >
+        #{yunfei,jdbcType=INTEGER},
+      </if>
+      <if test="priceindeed != null" >
+        #{priceindeed,jdbcType=INTEGER},
+      </if>
+      <if test="priceall != null" >
+        #{priceall,jdbcType=INTEGER},
+      </if>
+      <if test="privince != null" >
+        #{privince,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=CHAR},
+      </if>
+      <if test="area != null" >
+        #{area,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="linkman != null" >
+        #{linkman,jdbcType=CHAR},
+      </if>
+      <if test="linktel != null" >
+        #{linktel,jdbcType=CHAR},
+      </if>
+      <if test="youhui != null" >
+        #{youhui,jdbcType=INTEGER},
+      </if>
+      <if test="huoyun != null" >
+        #{huoyun,jdbcType=BIT},
+      </if>
+      <if test="qid != null" >
+        #{qid,jdbcType=BIGINT},
+      </if>
+      <if test="goodslist != null" >
+        #{goodslist,jdbcType=VARCHAR},
+      </if>
+      <if test="tips != null" >
+        #{tips,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.anan.huotui.po.TbOrderExample" resultType="java.lang.Integer" >
+    select count(*) from tb_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_order
+    <set >
+      <if test="record.oid != null" >
+        oid = #{record.oid,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=INTEGER},
+      </if>
+      <if test="record.yunfei != null" >
+        yunfei = #{record.yunfei,jdbcType=INTEGER},
+      </if>
+      <if test="record.priceindeed != null" >
+        priceindeed = #{record.priceindeed,jdbcType=INTEGER},
+      </if>
+      <if test="record.priceall != null" >
+        priceall = #{record.priceall,jdbcType=INTEGER},
+      </if>
+      <if test="record.privince != null" >
+        privince = #{record.privince,jdbcType=CHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=CHAR},
+      </if>
+      <if test="record.area != null" >
+        area = #{record.area,jdbcType=CHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=CHAR},
+      </if>
+      <if test="record.linkman != null" >
+        linkman = #{record.linkman,jdbcType=CHAR},
+      </if>
+      <if test="record.linktel != null" >
+        linktel = #{record.linktel,jdbcType=CHAR},
+      </if>
+      <if test="record.youhui != null" >
+        youhui = #{record.youhui,jdbcType=INTEGER},
+      </if>
+      <if test="record.huoyun != null" >
+        huoyun = #{record.huoyun,jdbcType=BIT},
+      </if>
+      <if test="record.qid != null" >
+        qid = #{record.qid,jdbcType=BIGINT},
+      </if>
+      <if test="record.goodslist != null" >
+        goodslist = #{record.goodslist,jdbcType=VARCHAR},
+      </if>
+      <if test="record.tips != null" >
+        tips = #{record.tips,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update tb_order
+    set oid = #{record.oid,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      state = #{record.state,jdbcType=INTEGER},
+      yunfei = #{record.yunfei,jdbcType=INTEGER},
+      priceindeed = #{record.priceindeed,jdbcType=INTEGER},
+      priceall = #{record.priceall,jdbcType=INTEGER},
+      privince = #{record.privince,jdbcType=CHAR},
+      city = #{record.city,jdbcType=CHAR},
+      area = #{record.area,jdbcType=CHAR},
+      address = #{record.address,jdbcType=CHAR},
+      linkman = #{record.linkman,jdbcType=CHAR},
+      linktel = #{record.linktel,jdbcType=CHAR},
+      youhui = #{record.youhui,jdbcType=INTEGER},
+      huoyun = #{record.huoyun,jdbcType=BIT},
+      qid = #{record.qid,jdbcType=BIGINT},
+      goodslist = #{record.goodslist,jdbcType=VARCHAR},
+      tips = #{record.tips,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_order
+    set oid = #{record.oid,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      state = #{record.state,jdbcType=INTEGER},
+      yunfei = #{record.yunfei,jdbcType=INTEGER},
+      priceindeed = #{record.priceindeed,jdbcType=INTEGER},
+      priceall = #{record.priceall,jdbcType=INTEGER},
+      privince = #{record.privince,jdbcType=CHAR},
+      city = #{record.city,jdbcType=CHAR},
+      area = #{record.area,jdbcType=CHAR},
+      address = #{record.address,jdbcType=CHAR},
+      linkman = #{record.linkman,jdbcType=CHAR},
+      linktel = #{record.linktel,jdbcType=CHAR},
+      youhui = #{record.youhui,jdbcType=INTEGER},
+      huoyun = #{record.huoyun,jdbcType=BIT},
+      qid = #{record.qid,jdbcType=BIGINT},
+      goodslist = #{record.goodslist,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anan.huotui.po.TbOrder" >
+    update tb_order
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="yunfei != null" >
+        yunfei = #{yunfei,jdbcType=INTEGER},
+      </if>
+      <if test="priceindeed != null" >
+        priceindeed = #{priceindeed,jdbcType=INTEGER},
+      </if>
+      <if test="priceall != null" >
+        priceall = #{priceall,jdbcType=INTEGER},
+      </if>
+      <if test="privince != null" >
+        privince = #{privince,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=CHAR},
+      </if>
+      <if test="area != null" >
+        area = #{area,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="linkman != null" >
+        linkman = #{linkman,jdbcType=CHAR},
+      </if>
+      <if test="linktel != null" >
+        linktel = #{linktel,jdbcType=CHAR},
+      </if>
+      <if test="youhui != null" >
+        youhui = #{youhui,jdbcType=INTEGER},
+      </if>
+      <if test="huoyun != null" >
+        huoyun = #{huoyun,jdbcType=BIT},
+      </if>
+      <if test="qid != null" >
+        qid = #{qid,jdbcType=BIGINT},
+      </if>
+      <if test="goodslist != null" >
+        goodslist = #{goodslist,jdbcType=VARCHAR},
+      </if>
+      <if test="tips != null" >
+        tips = #{tips,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.anan.huotui.po.TbOrder" >
+    update tb_order
+    set uid = #{uid,jdbcType=BIGINT},
+      state = #{state,jdbcType=INTEGER},
+      yunfei = #{yunfei,jdbcType=INTEGER},
+      priceindeed = #{priceindeed,jdbcType=INTEGER},
+      priceall = #{priceall,jdbcType=INTEGER},
+      privince = #{privince,jdbcType=CHAR},
+      city = #{city,jdbcType=CHAR},
+      area = #{area,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      linkman = #{linkman,jdbcType=CHAR},
+      linktel = #{linktel,jdbcType=CHAR},
+      youhui = #{youhui,jdbcType=INTEGER},
+      huoyun = #{huoyun,jdbcType=BIT},
+      qid = #{qid,jdbcType=BIGINT},
+      goodslist = #{goodslist,jdbcType=VARCHAR},
+      tips = #{tips,jdbcType=LONGVARCHAR}
+    where oid = #{oid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anan.huotui.po.TbOrder" >
+    update tb_order
+    set uid = #{uid,jdbcType=BIGINT},
+      state = #{state,jdbcType=INTEGER},
+      yunfei = #{yunfei,jdbcType=INTEGER},
+      priceindeed = #{priceindeed,jdbcType=INTEGER},
+      priceall = #{priceall,jdbcType=INTEGER},
+      privince = #{privince,jdbcType=CHAR},
+      city = #{city,jdbcType=CHAR},
+      area = #{area,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      linkman = #{linkman,jdbcType=CHAR},
+      linktel = #{linktel,jdbcType=CHAR},
+      youhui = #{youhui,jdbcType=INTEGER},
+      huoyun = #{huoyun,jdbcType=BIT},
+      qid = #{qid,jdbcType=BIGINT},
+      goodslist = #{goodslist,jdbcType=VARCHAR}
+    where oid = #{oid,jdbcType=BIGINT}
+  </update>
+</mapper>

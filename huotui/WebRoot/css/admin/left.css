@@ -1,0 +1,6 @@
+html,body { height:100%;}
+.nav { background:#dddddd; height:100%;}
+.navBg { height:80px; background:#0d6b8a; margin-bottom:30px;}
+.nav ul {}
+.nav li { height:60px; line-height:60px; font-size:28px; color:#333; text-align:center; background:#fff; border-bottom:solid 1px #b6b6b6;  border-top:solid 1px #b6b6b6;margin-top:-1px; cursor:pointer; position:relative;}
+.nav i { position:absolute; top:0; right:60px; font-size:24px; background:url("/system/images/denote.png") no-repeat center; width:14px; height:62px;  display:none;}

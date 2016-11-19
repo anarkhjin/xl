@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/huotui/css/admin/best.css">
+    <link rel="stylesheet" href="/huotui/css/admin/shop.css">
+	<script type="text/javascript" src="/huotui/js/lib/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/huotui/js/admin/shop.js"></script>
+</head>
+<body>
+<div class="topBg"></div>
+<div class="con">
+    <h2>商品管理</h2>
+    <div class="shopNav">
+        <dl id="cateList" class="clear">
+            <dt>分类:</dt>
+           
+        </dl>
+        <dl id="goodsState" class="clear">
+            <dt>状态:</dt>
+            <dd class="active">全部</dd>
+            <dd>未上架</dd>
+            <dd>出售中</dd>
+            <dd>已下架</dd>
+        </dl>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>名称</th>
+                <th>价格</th>
+                <th>重量</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody id="goodsList">
+           
+        </tbody>
+    </table>
+    <a href="newgoods.html" target="_blank" class="addBtn">+新增商品</a> 
+</div>
+<div id="newGoodsWin" class="winBox">
+    <h2>商品商品详情<i id="closeWin"></i></h2>
+   
+    <div class="infoBox">
+         <ul class="clear">
+            <li>
+                <label >商品编号:</label>
+                <span id="gid" >
+            </li>
+           </ul>
+        <ul class="clear">
+            
+            <li>
+                <label for="">分类:</label>
+                <input id="fenlei" type="text">
+            </li>
+            <li>
+                <label for="">名称:</label>
+                <input id="goodsName" type="text">
+            </li>
+            <li>
+                <label for="">商城价(角):</label>
+                <input id="price" type="text">
+            </li>
+            <li>
+                <label for="">数量:</label>
+                <input  id="num"  type="text">
+            </li>
+            <li>
+                <label for="">市场价(角):</label>
+                <input id="marketPrice" type="text">
+            </li>
+            <li>
+                <label for="">重量:</label>
+                <input id="weight" type="text">
+            </li>
+            <li>
+                <label for="">商城规格:</label>
+                <input id="guige"  type="text">
+            </li>
+            <li>
+                <label for="">市场规格:</label>
+                <input id="marketGuige"  type="text">
+            </li>
+            <li>
+                <label for="">运费:</label>
+                <input id="yunfei"  type="text">
+            </li>
+            <li>
+                <label for="">运费说明:</label>
+                <input id="yunfeishuoming"  type="text">
+            </li>
+        </ul>
+    </div>
+    <div class="describe clear">
+        <label for="" class="left">描述:</label>
+        <textarea   id="miaoshu" name="" id="" cols="30" rows="10" class="left"></textarea>
+        <span id="tips">提示</span>
+    </div>
+    <div class="sub">
+        <span id="tijiao">提交</span>
+    </div>
+	     <div class="upImg">
+        <div class="ImgList">
+            <ul id="goodsImaList" class="clear">
+                
+            </ul>
+        </div>
+    </div>
+    <div class="grounding clear">
+        <p>上架</p>
+        <span class="downBtn">下架</span>
+        <span class="active">上架</span>
+    </div>
+</div>
+<!--商品详情修改-->
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车</title>
+    <link rel="stylesheet" href="/huotui/css/best.css">
+    <link rel="stylesheet" href="/huotui/css/car.css">
+    <script type="text/javascript" src="../js/lib/jquery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="../js/cart.js"></script>
+    
+</head>
+    
+<body>
+<div class="top">
+    <div class="boxWidth topCon clear">
+        <a href="javascript:;">注册</a>
+        <a href="javascript:;">登录</a>
+        <a href="javascript:;">我的订单</a>
+    </div>
+</div>
+<div class="logoBox">
+    <div class="clear boxWidth logoCon">
+        <a href="javascript:;" class="left logo">logo</a>
+    </div>
+</div>
+<div class="carTitle boxWidth">
+    <ul class="clear">
+        <li class="all">
+            <input type="checkbox" class="left" />
+            <label for="" class="left">全部</label>
+        </li>
+        <li class="shop">
+            <span>商品</span>
+        </li>
+        <li class="money">
+            <span>单价(元)</span>
+        </li>
+        <li class="count">
+            <span>数量</span>
+        </li>
+        <li class="idea">
+            <span>小计(元)</span>
+        </li>
+        <li class="handle">
+            <span>操作</span>
+        </li>
+    </ul>
+</div>
+<div class="boxWidth">
+    <div class="buyList">
+        <ul id="cartList">
+          
+        </ul>
+    </div>
+</div>
+<div class="boxWidth">
+    <div class="tieBox">
+        <div class="tie clear">
+            <div class="left tieLeft">
+                <div class="tieAll clear left">
+                    <input type="checkbox" id="tieAll" class="left">
+                    <label for="tieAll" class="left">全选</label>
+                </div>
+                <span class="left">删除选中商品</span>
+            </div>
+            <div class="right tieRight clear">
+                <span class="countShop left">已选<em>0</em>件商品</span>
+                <div class="left tieMoney">
+                    <span>总价<em>￥0.00</em></span>
+                    <span>运费<em>￥0.00</span>
+                </div>
+            </div>
+        </div>
+        <span id ="gotoOrder" class="tieBtn">去结算</span>
+    </div>
+</div>
+<div class="footer">
+    <a href="javascript:;">24小时在线服务</a>
+    <p>客服电话：200-888-8888</p>
+    <p>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.备案号: 粤ICP备13003602号-4经营许可证编号: 粤B2-20130198营业执照</p>
+</div>
+</body>
+</html>

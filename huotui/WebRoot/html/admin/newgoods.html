@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/huotui/css/admin/best.css">
+    <link rel="stylesheet" href="/huotui/css/admin/newgoods.css">
+    <script type="text/javascript" src="/huotui/js/lib/jquery/jquery-1.7.1.min.js"></script>
+	<script type="text/javascript" src="/huotui/js/zxxFile.js"></script>
+    <script type="text/javascript" src="/huotui/js/admin/newgoods.js"></script>
+</head>
+<body>
+<div id="main">
+	<div id="newGoodsWin" class="winBox">
+    <h2>新增商品</h2>
+    <ul class="clear sel">
+        <li>
+            <div class="selBox clear">
+                <span class="left selTxt">分类选择:</span>
+               <!-- 
+                 <div class="selCon left">
+               
+                </div>
+                -->
+                    <select id="fenlei">
+					   <option selected="selected" >请选择分类</option>
+				   </select>
+            </div>
+        </li>
+        
+    </ul>
+    <div class="infoBox">
+        <ul class="clear">
+            <li>
+                <label for="">名称:</label>
+                <input id="goodsName" type="text">
+            </li>
+            <li>
+                <label for="">商城价(角):</label>
+                <input id="price" type="text">
+            </li>
+            <li>
+                <label for="">数量:</label>
+                <input  id="num"  type="text">
+            </li>
+            <li>
+                <label for="">市场价(角):</label>
+                <input id="marketPrice" type="text">
+            </li>
+            <li>
+                <label for="">重量:</label>
+                <input id="weight" type="text">
+            </li>
+            <li>
+                <label for="">商城规格:</label>
+                <input id="guige"  type="text">
+            </li>
+            <li>
+                <label for="">市场规格:</label>
+                <input id="marketGuige"  type="text">
+            </li>
+            <li>
+                <label for="">运费:</label>
+                <input id="yunfei"  type="text">
+            </li>
+            <li>
+                <label for="">运费说明:</label>
+                <input id="yunfeishuoming"  type="text">
+            </li>
+        </ul>
+    </div>
+    <div class="describe clear">
+        <label for="" class="left">描述:</label>
+        <textarea   id="miaoshu" name="" id="" cols="30" rows="10" class="left"></textarea>
+        <span id="tips">提示</span>
+    </div>
+  <div  id="tijiaobox" class="winBox">
+    <div class="sub">
+        <span id="tijiao">提交</span>
+    </div>
+  </div>
+	
+	
+	<div  class="infoBox">
+	     <div class="upImg">
+        <div class="ImgList">
+            <ul id="goodsImaList" class="clear">
+                
+            </ul>
+        </div>
+    </div>
+    
+    <div id="body" class="light">
+    	<div id="content" class="show">
+        	<h2>添加商品图片</h2>
+            <div class="demo">
+            	<form id="uploadForm" action="http://localhost:8080/huotui/admin/img.do" method="post" enctype="multipart/form-data">
+                    <div class="upload_box">
+                        <div class="upload_main">
+                            <div class="upload_choose">
+                                <input id="fileImage" type="file" size="30" name="fileImage" multiple />
+                                <span id="fileDragArea" class="upload_drag_area">或者将图片拖到此处</span>
+                            </div>
+                            <div id="preview" class="upload_preview"></div>
+                        </div>
+                        <div class="upload_submit">
+                            <button type="button" id="fileSubmit" class="upload_submit_btn">确认上传图片</button>
+                        </div>
+                        <div id="uploadInf" class="upload_inf"></div>
+                    </div>
+                </form>
+            </div>
+ <div class="upImg">
+       
+    <div class="grounding clear">
+        <p>上架</p>
+        <span class="downBtn">下架</span>
+        <span class="active">上架</span>
+    </div>
+</div>
+        </div>       
+    </div>
+</div>
+
+<div id="footer">
+    Designed &amp; Powerd by <a href="http://www.zhangxinxu.com/">zhangxinxu</a><br />
+    Copyright© 张鑫旭-鑫空间-鑫生活<br>
+    <a href="http://www.miibeian.gov.cn/" target="_blank">鄂ICP备09015569号</a>      
+</div>
+	
+</body>
+</html>

@@ -1,0 +1,19 @@
+body { background:#00d7f4;}
+h1 { color:#333333; font-size:36px; height:80px; width:100%; text-align:center; font-weight:normal; line-height:80px; background:#fff;}
+
+.lBg { background:url("/huotui/images/lBg.png") no-repeat center; width:364px; height:782px; position:absolute; top:50%; left:0; margin-top:-351px;}
+.rBg { background:url("/huotui/images/rBg.png") no-repeat center; width:364px; height:782px; position:absolute; top:50%; right:0; margin-top:-351px;}
+
+.loginBox { background:#f4f1e7; width:500px; height:400px; border-radius:10px; position:absolute; top:50%; left:50%; margin-top:-200px; margin-left:-250px;}
+.loginBox h2 { height:54px; padding:0 0 14px 30px; line-height:50px; font-size:24px; color:#010101; background:url("/huotui/images/lineBg.png") no-repeat 0 bottom; font-weight:normal; }
+.loginCon { padding-left:55px;}
+.loginCon ul {}
+.loginCon li { margin-top:30px; width:398px; height:58px; border:solid 1px #c3c3c3;}
+.userBox input, .passBox input { width:335px; height:14px; padding:22px 0 22px 5px; background:#fff; float:left; display:inline; border:none; }
+.userBox label,.passBox label { text-align: center;width:58px; height:58px;  float:left; display:inline;line-height:58px}
+.userBox label { background:#c3c3c3 url("/huotui/images/userBg.png") no-repeat center;}
+.passBox {}
+.passBox label { background:#c3c3c3 url("/huotui/images/passBg.png") no-repeat center;}
+.loginCon .loginBtn { border:none; text-align:center; padding-top:20px;}
+.loginBtn span { padding:8px 126px; font-size:24px; background:#e00022; color:#fff; border-radius:8px; cursor:pointer;}
+#tips{display: none}

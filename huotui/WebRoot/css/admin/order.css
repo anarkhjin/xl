@@ -1,0 +1,18 @@
+body,html{ background:#f4f4f4; }
+.topBg { height:80px; width:100%; background:#2292b7 url("/system/images/topBg.png") no-repeat right 0;}
+.con { width:1100px; margin:30px 0 0 30px; background:#fff; padding-bottom:122px;}
+.con h2 { height:50px; background:#dddddd; line-height:50px; font-size:28px; font-weight:normal; padding-left:30px;}
+.navBox { height:115px; border-bottom:solid 1px #dddddd;}
+.navBox dl { margin:16px 0 22px 90px; height:30px;}
+.navBox dt { float:left; color:#0d6b8a; font-size:24px; line-height:30px; margin-right:22px;}
+.navBox dd { float:left; color:#666666; font-size:24px; padding:0 8px; margin-right:14px; height:30px; line-height:30px;}
+.navBox dd.active { background:#0d6b8a; color:#fff;}
+
+.navBox ul { margin-left:90px;}
+.navBox li { float:left; margin-right:20px;}
+.navBox li label { float:left; color:#0d6b8a; font-size:24px; height:28px; line-height:28px; margin-right:20px;}
+.navBox input { float:left; width:158px; border:solid 1px #999999; color:#999999; height:26px;}
+table { width:1100px; text-align:center; border-collapse: collapse; border:solid 1px #999; padding-bottom:5px;}
+thead th { height:48px; background:#dddddd; font-size:20px; color:#666666; font-weight:normal;}
+tbody td { height:40px; border-top:solid 1px #dddddd; font-size:14px; color:#666;}
+tbody td a { color:#666;}

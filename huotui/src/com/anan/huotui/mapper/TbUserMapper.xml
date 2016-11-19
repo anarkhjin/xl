@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.anan.huotui.mapper.TbUserMapper" >
+  <resultMap id="BaseResultMap" type="com.anan.huotui.po.TbUser" >
+    <id column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="account" property="account" jdbcType="CHAR" />
+    <result column="name" property="name" jdbcType="CHAR" />
+    <result column="tel" property="tel" jdbcType="CHAR" />
+    <result column="qq" property="qq" jdbcType="CHAR" />
+    <result column="email" property="email" jdbcType="CHAR" />
+    <result column="token" property="token" jdbcType="CHAR" />
+    <result column="open_id" property="openId" jdbcType="CHAR" />
+    <result column="password" property="password" jdbcType="CHAR" />
+    <result column="piont" property="piont" jdbcType="INTEGER" />
+    <result column="cate" property="cate" jdbcType="TINYINT" />
+    <result column="shopid" property="shopid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uid, account, name, tel, qq, email, token, open_id, password, piont, cate, shopid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.anan.huotui.po.TbUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user
+    where uid = #{uid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_user
+    where uid = #{uid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.anan.huotui.po.TbUserExample" >
+    delete from tb_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.anan.huotui.po.TbUser" >
+    insert into tb_user (uid, account, name, 
+      tel, qq, email, token, 
+      open_id, password, piont, 
+      cate, shopid)
+    values (#{uid,jdbcType=BIGINT}, #{account,jdbcType=CHAR}, #{name,jdbcType=CHAR}, 
+      #{tel,jdbcType=CHAR}, #{qq,jdbcType=CHAR}, #{email,jdbcType=CHAR}, #{token,jdbcType=CHAR}, 
+      #{openId,jdbcType=CHAR}, #{password,jdbcType=CHAR}, #{piont,jdbcType=INTEGER}, 
+      #{cate,jdbcType=TINYINT}, #{shopid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.anan.huotui.po.TbUser" >
+    insert into tb_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="tel != null" >
+        tel,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="token != null" >
+        token,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="piont != null" >
+        piont,
+      </if>
+      <if test="cate != null" >
+        cate,
+      </if>
+      <if test="shopid != null" >
+        shopid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="tel != null" >
+        #{tel,jdbcType=CHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=CHAR},
+      </if>
+      <if test="token != null" >
+        #{token,jdbcType=CHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=CHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="piont != null" >
+        #{piont,jdbcType=INTEGER},
+      </if>
+      <if test="cate != null" >
+        #{cate,jdbcType=TINYINT},
+      </if>
+      <if test="shopid != null" >
+        #{shopid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.anan.huotui.po.TbUserExample" resultType="java.lang.Integer" >
+    select count(*) from tb_user
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_user
+    <set >
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=CHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=CHAR},
+      </if>
+      <if test="record.tel != null" >
+        tel = #{record.tel,jdbcType=CHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=CHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=CHAR},
+      </if>
+      <if test="record.token != null" >
+        token = #{record.token,jdbcType=CHAR},
+      </if>
+      <if test="record.openId != null" >
+        open_id = #{record.openId,jdbcType=CHAR},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=CHAR},
+      </if>
+      <if test="record.piont != null" >
+        piont = #{record.piont,jdbcType=INTEGER},
+      </if>
+      <if test="record.cate != null" >
+        cate = #{record.cate,jdbcType=TINYINT},
+      </if>
+      <if test="record.shopid != null" >
+        shopid = #{record.shopid,jdbcType=BIGINT},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_user
+    set uid = #{record.uid,jdbcType=BIGINT},
+      account = #{record.account,jdbcType=CHAR},
+      name = #{record.name,jdbcType=CHAR},
+      tel = #{record.tel,jdbcType=CHAR},
+      qq = #{record.qq,jdbcType=CHAR},
+      email = #{record.email,jdbcType=CHAR},
+      token = #{record.token,jdbcType=CHAR},
+      open_id = #{record.openId,jdbcType=CHAR},
+      password = #{record.password,jdbcType=CHAR},
+      piont = #{record.piont,jdbcType=INTEGER},
+      cate = #{record.cate,jdbcType=TINYINT},
+      shopid = #{record.shopid,jdbcType=BIGINT}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.anan.huotui.po.TbUser" >
+    update tb_user
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=CHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="tel != null" >
+        tel = #{tel,jdbcType=CHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=CHAR},
+      </if>
+      <if test="token != null" >
+        token = #{token,jdbcType=CHAR},
+      </if>
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=CHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="piont != null" >
+        piont = #{piont,jdbcType=INTEGER},
+      </if>
+      <if test="cate != null" >
+        cate = #{cate,jdbcType=TINYINT},
+      </if>
+      <if test="shopid != null" >
+        shopid = #{shopid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where uid = #{uid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.anan.huotui.po.TbUser" >
+    update tb_user
+    set account = #{account,jdbcType=CHAR},
+      name = #{name,jdbcType=CHAR},
+      tel = #{tel,jdbcType=CHAR},
+      qq = #{qq,jdbcType=CHAR},
+      email = #{email,jdbcType=CHAR},
+      token = #{token,jdbcType=CHAR},
+      open_id = #{openId,jdbcType=CHAR},
+      password = #{password,jdbcType=CHAR},
+      piont = #{piont,jdbcType=INTEGER},
+      cate = #{cate,jdbcType=TINYINT},
+      shopid = #{shopid,jdbcType=BIGINT}
+    where uid = #{uid,jdbcType=BIGINT}
+  </update>
+</mapper>
