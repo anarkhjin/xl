@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.laomashi.majiong.mapper.TbVipMapper" >
+  <resultMap id="BaseResultMap" type="com.laomashi.majiong.po.TbVip" >
+    <id column="vipid" property="vipid" jdbcType="BIGINT" />
+    <result column="creattime" property="creattime" jdbcType="TIMESTAMP" />
+    <result column="deadtime" property="deadtime" jdbcType="TIMESTAMP" />
+    <result column="password" property="password" jdbcType="CHAR" />
+    <result column="content" property="content" jdbcType="CHAR" />
+    <result column="qq" property="qq" jdbcType="CHAR" />
+    <result column="mobile" property="mobile" jdbcType="CHAR" />
+    <result column="vtimes" property="vtimes" jdbcType="SMALLINT" />
+    <result column="orderNo" property="orderno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    vipid, creattime, deadtime, password, content, qq, mobile, vtimes, orderNo
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laomashi.majiong.po.TbVipExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_vip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_vip
+    where vipid = #{vipid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_vip
+    where vipid = #{vipid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.laomashi.majiong.po.TbVipExample" >
+    delete from tb_vip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.laomashi.majiong.po.TbVip" >
+    insert into tb_vip (vipid, creattime, deadtime, 
+      password, content, qq, mobile, 
+      vtimes, orderNo)
+    values (#{vipid,jdbcType=BIGINT}, #{creattime,jdbcType=TIMESTAMP}, #{deadtime,jdbcType=TIMESTAMP}, 
+      #{password,jdbcType=CHAR}, #{content,jdbcType=CHAR}, #{qq,jdbcType=CHAR}, #{mobile,jdbcType=CHAR}, 
+      #{vtimes,jdbcType=SMALLINT}, #{orderno,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laomashi.majiong.po.TbVip" >
+    insert into tb_vip
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="vipid != null" >
+        vipid,
+      </if>
+      <if test="creattime != null" >
+        creattime,
+      </if>
+      <if test="deadtime != null" >
+        deadtime,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="vtimes != null" >
+        vtimes,
+      </if>
+      <if test="orderno != null" >
+        orderNo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="vipid != null" >
+        #{vipid,jdbcType=BIGINT},
+      </if>
+      <if test="creattime != null" >
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadtime != null" >
+        #{deadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=CHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="vtimes != null" >
+        #{vtimes,jdbcType=SMALLINT},
+      </if>
+      <if test="orderno != null" >
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.laomashi.majiong.po.TbVipExample" resultType="java.lang.Integer" >
+    select count(*) from tb_vip
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_vip
+    <set >
+      <if test="record.vipid != null" >
+        vipid = #{record.vipid,jdbcType=BIGINT},
+      </if>
+      <if test="record.creattime != null" >
+        creattime = #{record.creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.deadtime != null" >
+        deadtime = #{record.deadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.password != null" >
+        password = #{record.password,jdbcType=CHAR},
+      </if>
+      <if test="record.content != null" >
+        content = #{record.content,jdbcType=CHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=CHAR},
+      </if>
+      <if test="record.mobile != null" >
+        mobile = #{record.mobile,jdbcType=CHAR},
+      </if>
+      <if test="record.vtimes != null" >
+        vtimes = #{record.vtimes,jdbcType=SMALLINT},
+      </if>
+      <if test="record.orderno != null" >
+        orderNo = #{record.orderno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_vip
+    set vipid = #{record.vipid,jdbcType=BIGINT},
+      creattime = #{record.creattime,jdbcType=TIMESTAMP},
+      deadtime = #{record.deadtime,jdbcType=TIMESTAMP},
+      password = #{record.password,jdbcType=CHAR},
+      content = #{record.content,jdbcType=CHAR},
+      qq = #{record.qq,jdbcType=CHAR},
+      mobile = #{record.mobile,jdbcType=CHAR},
+      vtimes = #{record.vtimes,jdbcType=SMALLINT},
+      orderNo = #{record.orderno,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laomashi.majiong.po.TbVip" >
+    update tb_vip
+    <set >
+      <if test="creattime != null" >
+        creattime = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadtime != null" >
+        deadtime = #{deadtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=CHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=CHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=CHAR},
+      </if>
+      <if test="vtimes != null" >
+        vtimes = #{vtimes,jdbcType=SMALLINT},
+      </if>
+      <if test="orderno != null" >
+        orderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where vipid = #{vipid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laomashi.majiong.po.TbVip" >
+    update tb_vip
+    set creattime = #{creattime,jdbcType=TIMESTAMP},
+      deadtime = #{deadtime,jdbcType=TIMESTAMP},
+      password = #{password,jdbcType=CHAR},
+      content = #{content,jdbcType=CHAR},
+      qq = #{qq,jdbcType=CHAR},
+      mobile = #{mobile,jdbcType=CHAR},
+      vtimes = #{vtimes,jdbcType=SMALLINT},
+      orderNo = #{orderno,jdbcType=VARCHAR}
+    where vipid = #{vipid,jdbcType=BIGINT}
+  </update>
+</mapper>

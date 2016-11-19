@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/css/best.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <script type="text/javascript" src="js/lib/jquery/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/login.js"></script>
+    </head>
+<body>
+<div class="logoBox">
+    <div class="boxWidth">
+        <a href="javascript:;" class="logo left" title="logo">login</a>
+        <div class="tabBtn left clear">
+            <span id="dengLuSpan" class="active">登录</span></a>
+            <em class="left">|</em>
+            <span id="zhuceSpan">注册</span>
+        </div>
+    </div>
+</div>
+<div  id="denglu"  class="bigboxWidth clear min">
+    <div class="loginBox left">
+        <div class="loginCon left clear">
+        
+            <ul class="left">
+                <li>
+                    <input  id="telephone" type="text">
+                    <span>手机号</span>
+                </li>
+                <li>
+                    <input id="password" type="password">
+                    <span>密码</span>
+                </li>
+                <li>
+                    <input id="verifycode" type="text">
+                    <span>请输入验证码，不区分大小写</span>
+                </li>
+            </ul>
+            <div class="stateBox clear">
+                <div class="state left clear">
+                    <input type="checkbox" id="remember" class="left">
+                    <label for="remember" class="left">记住登录状态</label>
+                </div>
+                <a class="forget right" href="javascript:;">忘记密码?</a>
+            </div>
+            <span  id="loginbtn" class="login">登录</span>
+        </div>
+        <span id="tel"></span>
+        <div class="verifyBox left clear">
+            <span id="verify" class="left"></span>
+            <script type="text/javascript">
+            function test(){
+		$.ajax({
+			//提交数据的类型 POST GET
+			type:"POST",
+			//提交的网址
+			url:"/pc/getVerify.do",
+			//提交的数据
+			data:{},
+			//返回数据的格式
+			datatype: "json",//"xml", "html", "script", "json", "jsonp", "text".
+			//在请求之前调用的函数
+			//beforeSend:function(){$("#msg").html("logining");},
+			//成功返回之后调用的函数             
+			success:function(data){
+				var json=$.parseJSON(data); 
+				code=json.data;
+				console.log(code);
+				var verify=  document.getElementById("verify");
+				verify.innerHTML=code;
+				
+			} ,
+			//调用执行后调用的函数
+			complete: function(XMLHttpRequest, textStatus){
+//               alert(XMLHttpRequest.responseText);
+//               alert(textStatus);
+				//HideLoading();
+			},
+			//调用出错执行的函数
+			error: function(){
+				//请求出错处理
+			}         
+		});
+	}
+            </script>
+            <a href="javascript:test();" class="left">看不清？换一张</a>
+        </div>
+       
+        
+    </div>
+    <div class="QQ left"></div>
+</div>
+
+
+
+<div class="footer">
+    <a href="javascript:;">24小时在线服务</a>
+    <p>客服电话：200-888-8888</p>
+    <p>©2016 Meizu Telecom Equipment Co., Ltd. All rights reserved.备案号: 粤ICP备13003602号-4经营许可证编号: 粤B2-20130198营业执照</p>
+</div>
+</body>
+</html>

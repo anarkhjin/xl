@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.laomashi.majiong.mapper.TbUserinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.laomashi.majiong.po.TbUserinfo" >
+    <id column="uinfoid" property="uinfoid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="sex" property="sex" jdbcType="SMALLINT" />
+    <result column="birthday" property="birthday" jdbcType="TIMESTAMP" />
+    <result column="telephone" property="telephone" jdbcType="CHAR" />
+    <result column="qq" property="qq" jdbcType="CHAR" />
+    <result column="realname" property="realname" jdbcType="CHAR" />
+    <result column="address" property="address" jdbcType="CHAR" />
+    <result column="sysrole" property="sysrole" jdbcType="CHAR" />
+    <result column="status" property="status" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    uinfoid, uid, sex, birthday, telephone, qq, realname, address, sysrole, status
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laomashi.majiong.po.TbUserinfoExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_userinfo
+    where uinfoid = #{uinfoid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_userinfo
+    where uinfoid = #{uinfoid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.laomashi.majiong.po.TbUserinfoExample" >
+    delete from tb_userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.laomashi.majiong.po.TbUserinfo" >
+    insert into tb_userinfo (uinfoid, uid, sex, 
+      birthday, telephone, qq, 
+      realname, address, sysrole, 
+      status)
+    values (#{uinfoid,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, #{sex,jdbcType=SMALLINT}, 
+      #{birthday,jdbcType=TIMESTAMP}, #{telephone,jdbcType=CHAR}, #{qq,jdbcType=CHAR}, 
+      #{realname,jdbcType=CHAR}, #{address,jdbcType=CHAR}, #{sysrole,jdbcType=CHAR}, 
+      #{status,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laomashi.majiong.po.TbUserinfo" >
+    insert into tb_userinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uinfoid != null" >
+        uinfoid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="sysrole != null" >
+        sysrole,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uinfoid != null" >
+        #{uinfoid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=CHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="sysrole != null" >
+        #{sysrole,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.laomashi.majiong.po.TbUserinfoExample" resultType="java.lang.Integer" >
+    select count(*) from tb_userinfo
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_userinfo
+    <set >
+      <if test="record.uinfoid != null" >
+        uinfoid = #{record.uinfoid,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.sex != null" >
+        sex = #{record.sex,jdbcType=SMALLINT},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=CHAR},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=CHAR},
+      </if>
+      <if test="record.realname != null" >
+        realname = #{record.realname,jdbcType=CHAR},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=CHAR},
+      </if>
+      <if test="record.sysrole != null" >
+        sysrole = #{record.sysrole,jdbcType=CHAR},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_userinfo
+    set uinfoid = #{record.uinfoid,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      sex = #{record.sex,jdbcType=SMALLINT},
+      birthday = #{record.birthday,jdbcType=TIMESTAMP},
+      telephone = #{record.telephone,jdbcType=CHAR},
+      qq = #{record.qq,jdbcType=CHAR},
+      realname = #{record.realname,jdbcType=CHAR},
+      address = #{record.address,jdbcType=CHAR},
+      sysrole = #{record.sysrole,jdbcType=CHAR},
+      status = #{record.status,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laomashi.majiong.po.TbUserinfo" >
+    update tb_userinfo
+    <set >
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=CHAR},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=CHAR},
+      </if>
+      <if test="realname != null" >
+        realname = #{realname,jdbcType=CHAR},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="sysrole != null" >
+        sysrole = #{sysrole,jdbcType=CHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=CHAR},
+      </if>
+    </set>
+    where uinfoid = #{uinfoid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laomashi.majiong.po.TbUserinfo" >
+    update tb_userinfo
+    set uid = #{uid,jdbcType=BIGINT},
+      sex = #{sex,jdbcType=SMALLINT},
+      birthday = #{birthday,jdbcType=TIMESTAMP},
+      telephone = #{telephone,jdbcType=CHAR},
+      qq = #{qq,jdbcType=CHAR},
+      realname = #{realname,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      sysrole = #{sysrole,jdbcType=CHAR},
+      status = #{status,jdbcType=CHAR}
+    where uinfoid = #{uinfoid,jdbcType=BIGINT}
+  </update>
+</mapper>

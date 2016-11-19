@@ -1,0 +1,25 @@
+
+/*������ʽ*/
+body,h1,h2,h3,h4,h5,h6,ul,p,ol,dt,dl,dd,input,select { padding:0; margin:0;}
+li { list-style:none;}
+a { text-decoration:none; bblr:expression(this.onFocus=this.blur());/*IEʹ��*/  outline-style:none;/*FFʹ��*/ }
+img { border:none;}
+input,textarea { outline:none;}
+
+/*ͨ����ʽ*/
+em,i,b { font-style:normal;}
+body { font-size:12px; font-family:'Microsoft YaHei',Arial, Helvetica, sans-serif;}
+
+.over {overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+
+.clear:after { display:block; content:""; clear:both;}
+
+.left{ float:left; display:inline;}
+
+.right{ float:right; display:inline;}
+
+.boxWidth { width:1000px; margin:0 auto;}
+.bigboxWidth { width:1200px; margin:0 auto;}
+
+/*word-break:break-all �����Զ�����*/
+

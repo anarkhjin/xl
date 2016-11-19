@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.laomashi.majiong.mapper.TbTopicMapper" >
+  <resultMap id="BaseResultMap" type="com.laomashi.majiong.po.TbTopic" >
+    <id column="tid" property="tid" jdbcType="BIGINT" />
+    <result column="subid" property="subid" jdbcType="BIGINT" />
+    <result column="uid" property="uid" jdbcType="BIGINT" />
+    <result column="title" property="title" jdbcType="CHAR" />
+    <result column="sendtime" property="sendtime" jdbcType="TIMESTAMP" />
+    <result column="click_num" property="clickNum" jdbcType="INTEGER" />
+    <result column="fellow_num" property="fellowNum" jdbcType="INTEGER" />
+    <result column="step_num" property="stepNum" jdbcType="INTEGER" />
+    <result column="reply_num" property="replyNum" jdbcType="INTEGER" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="last_replytime" property="lastReplytime" jdbcType="TIMESTAMP" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="topic_type" property="topicType" jdbcType="INTEGER" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    tid, subid, uid, title, sendtime, click_num, fellow_num, step_num, reply_num, updatetime, 
+    last_replytime, status, topic_type, video_url
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.laomashi.majiong.po.TbTopicExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_topic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_topic
+    where tid = #{tid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from tb_topic
+    where tid = #{tid,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.laomashi.majiong.po.TbTopicExample" >
+    delete from tb_topic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.laomashi.majiong.po.TbTopic" >
+    insert into tb_topic (tid, subid, uid, 
+      title, sendtime, click_num, 
+      fellow_num, step_num, reply_num, 
+      updatetime, last_replytime, status, 
+      topic_type, video_url)
+    values (#{tid,jdbcType=BIGINT}, #{subid,jdbcType=BIGINT}, #{uid,jdbcType=BIGINT}, 
+      #{title,jdbcType=CHAR}, #{sendtime,jdbcType=TIMESTAMP}, #{clickNum,jdbcType=INTEGER}, 
+      #{fellowNum,jdbcType=INTEGER}, #{stepNum,jdbcType=INTEGER}, #{replyNum,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{lastReplytime,jdbcType=TIMESTAMP}, #{status,jdbcType=TINYINT}, 
+      #{topicType,jdbcType=INTEGER}, #{videoUrl,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.laomashi.majiong.po.TbTopic" >
+    insert into tb_topic
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        tid,
+      </if>
+      <if test="subid != null" >
+        subid,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="sendtime != null" >
+        sendtime,
+      </if>
+      <if test="clickNum != null" >
+        click_num,
+      </if>
+      <if test="fellowNum != null" >
+        fellow_num,
+      </if>
+      <if test="stepNum != null" >
+        step_num,
+      </if>
+      <if test="replyNum != null" >
+        reply_num,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="lastReplytime != null" >
+        last_replytime,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="topicType != null" >
+        topic_type,
+      </if>
+      <if test="videoUrl != null" >
+        video_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="tid != null" >
+        #{tid,jdbcType=BIGINT},
+      </if>
+      <if test="subid != null" >
+        #{subid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=CHAR},
+      </if>
+      <if test="sendtime != null" >
+        #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clickNum != null" >
+        #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="fellowNum != null" >
+        #{fellowNum,jdbcType=INTEGER},
+      </if>
+      <if test="stepNum != null" >
+        #{stepNum,jdbcType=INTEGER},
+      </if>
+      <if test="replyNum != null" >
+        #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastReplytime != null" >
+        #{lastReplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="topicType != null" >
+        #{topicType,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null" >
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.laomashi.majiong.po.TbTopicExample" resultType="java.lang.Integer" >
+    select count(*) from tb_topic
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_topic
+    <set >
+      <if test="record.tid != null" >
+        tid = #{record.tid,jdbcType=BIGINT},
+      </if>
+      <if test="record.subid != null" >
+        subid = #{record.subid,jdbcType=BIGINT},
+      </if>
+      <if test="record.uid != null" >
+        uid = #{record.uid,jdbcType=BIGINT},
+      </if>
+      <if test="record.title != null" >
+        title = #{record.title,jdbcType=CHAR},
+      </if>
+      <if test="record.sendtime != null" >
+        sendtime = #{record.sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.clickNum != null" >
+        click_num = #{record.clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.fellowNum != null" >
+        fellow_num = #{record.fellowNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.stepNum != null" >
+        step_num = #{record.stepNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.replyNum != null" >
+        reply_num = #{record.replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastReplytime != null" >
+        last_replytime = #{record.lastReplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.status != null" >
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.topicType != null" >
+        topic_type = #{record.topicType,jdbcType=INTEGER},
+      </if>
+      <if test="record.videoUrl != null" >
+        video_url = #{record.videoUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_topic
+    set tid = #{record.tid,jdbcType=BIGINT},
+      subid = #{record.subid,jdbcType=BIGINT},
+      uid = #{record.uid,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=CHAR},
+      sendtime = #{record.sendtime,jdbcType=TIMESTAMP},
+      click_num = #{record.clickNum,jdbcType=INTEGER},
+      fellow_num = #{record.fellowNum,jdbcType=INTEGER},
+      step_num = #{record.stepNum,jdbcType=INTEGER},
+      reply_num = #{record.replyNum,jdbcType=INTEGER},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      last_replytime = #{record.lastReplytime,jdbcType=TIMESTAMP},
+      status = #{record.status,jdbcType=TINYINT},
+      topic_type = #{record.topicType,jdbcType=INTEGER},
+      video_url = #{record.videoUrl,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.laomashi.majiong.po.TbTopic" >
+    update tb_topic
+    <set >
+      <if test="subid != null" >
+        subid = #{subid,jdbcType=BIGINT},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=BIGINT},
+      </if>
+      <if test="title != null" >
+        title = #{title,jdbcType=CHAR},
+      </if>
+      <if test="sendtime != null" >
+        sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="clickNum != null" >
+        click_num = #{clickNum,jdbcType=INTEGER},
+      </if>
+      <if test="fellowNum != null" >
+        fellow_num = #{fellowNum,jdbcType=INTEGER},
+      </if>
+      <if test="stepNum != null" >
+        step_num = #{stepNum,jdbcType=INTEGER},
+      </if>
+      <if test="replyNum != null" >
+        reply_num = #{replyNum,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastReplytime != null" >
+        last_replytime = #{lastReplytime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="topicType != null" >
+        topic_type = #{topicType,jdbcType=INTEGER},
+      </if>
+      <if test="videoUrl != null" >
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where tid = #{tid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.laomashi.majiong.po.TbTopic" >
+    update tb_topic
+    set subid = #{subid,jdbcType=BIGINT},
+      uid = #{uid,jdbcType=BIGINT},
+      title = #{title,jdbcType=CHAR},
+      sendtime = #{sendtime,jdbcType=TIMESTAMP},
+      click_num = #{clickNum,jdbcType=INTEGER},
+      fellow_num = #{fellowNum,jdbcType=INTEGER},
+      step_num = #{stepNum,jdbcType=INTEGER},
+      reply_num = #{replyNum,jdbcType=INTEGER},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      last_replytime = #{lastReplytime,jdbcType=TIMESTAMP},
+      status = #{status,jdbcType=TINYINT},
+      topic_type = #{topicType,jdbcType=INTEGER},
+      video_url = #{videoUrl,jdbcType=VARCHAR}
+    where tid = #{tid,jdbcType=BIGINT}
+  </update>
+     <select id="selectLimit" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from tb_topic
+	    where subid = #{subid,jdbcType=BIGINT} and status=1 limit 0,10;
+    </select>
+     <select id="selectBySubid" resultMap="BaseResultMap" parameterType="com.laomashi.majiong.common.TopicLimitBean" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from tb_topic
+	    where subid = #{subid,jdbcType=BIGINT} limit #{start,jdbcType=BIGINT},#{end,jdbcType=BIGINT};
+    </select>
+     <select id="selectAllTopicOrderByTime" resultMap="BaseResultMap" parameterType="com.laomashi.majiong.common.TopicLimitBean" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from tb_topic  where status =1  order by tid desc  limit #{start,jdbcType=BIGINT},#{end,jdbcType=BIGINT};
+    </select>
+      <select id="selectBySubidWithStatus" resultMap="BaseResultMap" parameterType="com.laomashi.majiong.common.TopicLimitBean" >
+	    select 
+	    <include refid="Base_Column_List" />
+	    from tb_topic
+	    where subid = #{subid,jdbcType=BIGINT} and status=1 limit #{start,jdbcType=BIGINT},#{end,jdbcType=BIGINT};
+    </select>
+    <update id="updateClick" parameterType="java.lang.Long">
+	     update tb_topic
+	    set 
+	      click_num = click_num+1
+	    where tid = #{tid,jdbcType=BIGINT}
+    </update>
+    <update id="updateLike" parameterType="java.lang.Long">
+	     update tb_topic
+	    set 
+	      fellow_num = fellow_num+1
+	    where tid = #{tid,jdbcType=BIGINT}
+    </update>
+    <update id="updateUnLike" parameterType="java.lang.Long">
+	     update tb_topic
+	    set 
+	      step_num = step_num+1
+	    where tid = #{tid,jdbcType=BIGINT}
+    </update>
+    <update id="publishTopic" parameterType="java.lang.Long">
+	     update tb_topic
+	    set 
+	      status = 1
+	    where tid = #{tid,jdbcType=BIGINT}
+    </update>
+    <update id="publishDown" parameterType="java.lang.Long">
+	     update tb_topic
+	    set 
+	      status = 0
+	    where tid = #{tid,jdbcType=BIGINT}
+    </update>
+</mapper>
